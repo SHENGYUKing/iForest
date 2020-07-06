@@ -21,6 +21,13 @@
 > 可以看出，虽然在一部分样本上模型产生了差错，但是总体上表现仍然可圈可点值得深入研究。
 
 ---
+## 文件说明
+> train.py -- 用于训练IForest模型    
+> generator.py -- 用于生成样本数据    
+> test.py -- 用于检验训练模型重载时的性能    
+> iforest_det.pkl -- 已训练完成的模型参数文件，可通过重载直接使用
+
+---
 ## 参考文献
 > [1][Liu, Fei Tony, Kai Ming Ting, and Zhi-Hua Zhou. “Isolation forest.” Data Mining, 2008. ICDM’08. Eighth IEEE International Conference on. IEEE, 2008.](http://www.researchgate.net/publication/224384174_Isolation_Forest)    
 > [2][Liu, Fei Tony, Kai Ming Ting, and Zhi-Hua Zhou. “Isolation-based anomaly detection.” ACM Transactions on Knowledge Discovery from Data (TKDD) 6.1 (2012): 3.](https://www.researchgate.net/publication/239761771_Isolation-Based_Anomaly_Detection)    

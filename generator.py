@@ -48,7 +48,8 @@ def generator(sample_num, section, anormal_fraction):
     offset = np.random.randint(1, 50, size=normal_s)
     for i in range(0, normal_s):
         x = np.linspace(0, section, section)
-        y = fun_normal(offset[i], section)
-        y_n = add_noise(y, 50)
-        train.append(y_n.tolist())
+        y = function(x, section, offset[i])
+        # y = fun_normal(offset[i], section)
+        # y_n = add_noise(y, 50)
+        train.append(y.tolist())
     return np.asarray(train)
