@@ -2,11 +2,13 @@
 
 import generator as gen
 import numpy as np
+from sklearn.utils import shuffle
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import IsolationForest
 import joblib
 import matplotlib.pyplot as plt
 import time
+import os
 
 
 def normalize(data_set):
@@ -25,6 +27,7 @@ rng = np.random.RandomState(42)
 
 t1 = time.time()
 dataset = normalize(gen.generator(SAMPLE_NUM, SECTION, ANORMAL_FRACTION))
+dataset = shuffle(dataset, random_state=rng)
 t2 = time.time()
 print("生成数据耗时: %.2f 秒" % (t2 - t1))
 
@@ -40,7 +43,12 @@ y_pred_train = model.predict(train)
 y_pred_test = model.predict(test)
 t4 = time.time()
 print("训练模型耗时: %.2f 秒" % (t4 - t3))
-detector = joblib.dump(model, "./iforest_det.pkl")
+
+name = "iforest_det.pkl"
+while name in os.listdir("./"):
+    tmp = name.split(".")
+    name = tmp[0] + str(1) + "." + tmp[1]
+detector = joblib.dump(model, "./" + name)
 
 plt.figure(1)
 for i in range(0, 50):
